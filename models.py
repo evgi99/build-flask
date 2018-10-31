@@ -33,14 +33,14 @@ class User(UserMixin, db.Document):
         return check_password_hash(password_hash, password)
 
     meta = {
-		'allow_inheritance': True,
-		'indexes': ['-created_at', 'username'],
-		'ordering': ['-created_at']
-	}
+        'allow_inheritance': True,
+        'indexes': ['-created_at', 'username'],
+        'ordering': ['-created_at']
+    }
 
 class Task(db.Document):
-	created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
-	user = db.ReferenceField(User)
-	task_id = db.StringField(max_length=255, required=True)
-	task_title = db.StringField(max_length=50, required=True)
-	task_content = db.StringField(max_length=255, required=True)
+    created_at = db.DateTimeField(default=datetime.datetime.now, required=True)
+    user = db.ReferenceField(User)
+    task_id = db.StringField(max_length=255, required=True)
+    task_title = db.StringField(max_length=50, required=True)
+    task_content = db.StringField(max_length=255, required=True)
